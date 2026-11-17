@@ -112,7 +112,7 @@ export const LOCALES = {
       heading: 'Experiência',
       jobs: [
         { company: 'Fortis Games', role: 'Test Lead', dates: 'mar. 2022 – nov. 2026', start: '2022-03', end: '2026-11', summary: 'Liderei equipes internas e externas de QA, defini estratégias de teste e apoiei entregas com evidências claras.' },
-        { company: 'Oktagon Games', role: 'Assistant QA (Lead)', dates: 'jan. 2020 – mar. 2022', start: '2020-01', end: '2022-03', summary: 'Testei jogos do desenvolvimento ao lançamento, contribuindo com casos de teste, testes exploratórios e relatos de bugs claros.' },
+        { company: 'Oktagon Games', role: 'Assistant QA (Lead)', dates: 'jan. 2020 – mar. 2022', start: '2020-01', end: '2022-03', summary: 'Testei jogos do desenvolvimento ao lançamento, contribuindo com casos de teste, testes exploratórios e reportes de bugs claros.' },
         { company: 'Veltec Soluções Tecnológicas', role: 'Estagiária de TI', dates: 'dez. 2018 – dez. 2019', start: '2018-12', end: '2019-12' },
       ],
       education: 'Análise e Desenvolvimento de Sistemas, Instituto Federal do Paraná (2017–2019) · ISTQB Certified Tester Foundation Level',
@@ -136,9 +136,9 @@ export const LOCALES = {
       thumbAlt: (name) => `Captura de tela de ${name}`,
       items: {
         'pixel-swarm': { blurb: 'Um puzzle jogável com QA desde o início, do design e da estratégia de testes às evidências para reproduzir bugs.', label: 'Jogo + QA', tags: ['Game design', 'Estratégia de testes'], primary: 'Jogar demo' },
-        'qa-workspace': { blurb: 'Um workspace de QA para relatos, execuções de testes e recomendações de release baseadas em evidências.', label: 'Integrações simuladas', tags: ['Design de fluxos', 'Decisões de release'], primary: 'Ver demo' },
+        'qa-workspace': { blurb: 'Um workspace de QA para reportes, execuções de testes e recomendações de release baseadas em evidências.', label: 'Integrações simuladas', tags: ['Design de fluxos', 'Decisões de release'], primary: 'Ver demo' },
         'performance-lab': { blurb: 'Explore sessões de performance, telemetria e capturas sincronizadas, comparações e relatórios.', label: 'Telemetria simulada', tags: ['Análise de performance', 'Relatórios'], primary: 'Ver demo' },
-        'game-qa-skills': { blurb: 'Fluxos de QA de jogos com relatos reproduzíveis, capturas, vídeos e relatórios de exemplo.', label: 'Fluxos de QA com apoio de IA', tags: ['Evidências de bugs', 'Relatórios de teste'], primary: 'Ver relatórios' },
+        'game-qa-skills': { blurb: 'Fluxos de QA de jogos com reportes reproduzíveis, capturas, vídeos e relatórios de exemplo.', label: 'Fluxos de QA com apoio de IA', tags: ['Evidências de bugs', 'Relatórios de teste'], primary: 'Ver relatórios' },
       },
     },
     featured: {
@@ -153,7 +153,7 @@ export const LOCALES = {
       tags: ['Playwright · TypeScript', 'Postman · API', 'BDD · CI'],
       primary: 'Página do projeto',
       report: 'Relatório de testes',
-      thumbAlt: 'Relatos de bugs do Web Testing Lab, cada um com uma captura de tela do defeito',
+      thumbAlt: 'Reportes de bugs do Web Testing Lab, cada um com uma captura de tela do defeito',
     },
     contact: {
       heading: 'Vamos conversar sobre qualidade.',
