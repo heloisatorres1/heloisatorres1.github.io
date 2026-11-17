@@ -120,6 +120,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
 <meta name="theme-color" content="#fbf5ef">
 <link rel="icon" href="${base}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="${base}fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${base}fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${base}styles.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -254,14 +255,54 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
 </footer>
 
 <script>
-  // Keep the visitor on the same section when switching language, and remember an explicit choice.
+(function () {
+  var KEY = 'lang-switch-position';
+
+  // Switching language: remember the section being read and where it sits on screen,
+  // so the other language opens at the same place instead of at the top.
   document.querySelectorAll('.langs a[data-lang]').forEach(function (a) {
     a.addEventListener('click', function () {
       try { localStorage.setItem('lang', a.dataset.lang); } catch (e) {}
+      var anchor = null;
+      document.querySelectorAll('main [id]:not(#main), footer[id]').forEach(function (el) {
+        if (el.getBoundingClientRect().top <= 120) anchor = el;
+      });
+      var position = anchor && window.scrollY > 0 ? { id: anchor.id, offset: anchor.getBoundingClientRect().top } : { top: true };
+      try { sessionStorage.setItem(KEY, JSON.stringify(position)); } catch (e) {}
       if (location.hash) a.href = a.getAttribute('href') + location.hash;
     });
   });
-  try { if (document.querySelector('.langs [aria-current]')) localStorage.setItem('lang', '${code}'); } catch (e) {}
+
+  // Arriving from a language switch: restore that place instantly, without a scroll animation.
+  var saved = null;
+  try { saved = JSON.parse(sessionStorage.getItem(KEY)); sessionStorage.removeItem(KEY); } catch (e) {}
+  function restore() {
+    if (saved.top) return window.scrollTo(0, 0);
+    var el = document.getElementById(saved.id);
+    if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - saved.offset);
+  }
+  if (saved) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    restore();
+    // Web fonts change line heights when they arrive, which moves everything below. Keep the place
+    // while the layout settles (at most 3 s), unless the visitor starts scrolling.
+    var moved = false;
+    var stop = function () { moved = true; };
+    window.addEventListener('wheel', stop, { once: true, passive: true });
+    window.addEventListener('touchstart', stop, { once: true, passive: true });
+    window.addEventListener('keydown', stop, { once: true });
+    if ('ResizeObserver' in window) {
+      var observer = new ResizeObserver(function () { if (!moved) restore(); });
+      observer.observe(document.body);
+      setTimeout(function () { observer.disconnect(); }, 3000);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (!moved) restore(); });
+  }
+
+  // Smooth scrolling only for clicks inside the page, never for arriving on it.
+  requestAnimationFrame(function () { document.documentElement.classList.add('smooth'); });
+})();
+try { if (document.querySelector('.langs [aria-current]')) localStorage.setItem('lang', '${code}'); } catch (e) {}
 </script>
 </body>
 </html>
@@ -275,7 +316,7 @@ export function renderRoot(opts) {
   return html
     .replace('<script>document.documentElement', `${redirect}\n<script>document.documentElement`)
     // On the root page the language links must not overwrite the stored choice by merely loading.
-    .replace(`try { if (document.querySelector('.langs [aria-current]')) localStorage.setItem('lang', 'en'); } catch (e) {}`, '');
+    .replace(`try { if (document.querySelector('.langs [aria-current]')) localStorage.setItem('lang', 'en'); } catch (e) {}\n`, '');
 }
 
 export function renderNotFound({ siteUrl }) {

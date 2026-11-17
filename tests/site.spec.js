@@ -53,12 +53,27 @@ for (const l of LOCALES) {
       }
     });
 
-    test(`switching language keeps the section (${l.lang})`, async ({ page }) => {
-      await page.goto(`${l.path}#projects`);
-      await page.getByRole('navigation', { name: /Language|Idioma/ }).getByRole('link', { name: l.other }).click();
-      await expect(page).toHaveURL(/#projects$/);
-      await expect(page.locator('html')).not.toHaveAttribute('lang', l.lang);
-    });
+    for (const start of [{ name: 'scrolled by hand', y: 1800 }, { name: 'from the Projects link', hash: '#projects' }]) {
+      test(`switching language keeps the place, without scrolling, ${start.name} (${l.lang}) @mobile`, async ({ page }) => {
+        await page.goto(l.path + (start.hash ?? ''));
+        if (start.y) await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), start.y);
+        const before = await page.evaluate(() => window.scrollY);
+        expect(before).toBeGreaterThan(500);
+        // A real mouse click: Playwright's click() would scroll the page to reach the sticky header first.
+        const box = await page.getByRole('navigation', { name: /Language|Idioma/ }).getByRole('link', { name: l.other }).boundingBox();
+        await Promise.all([page.waitForURL((u) => !u.pathname.endsWith(l.path)), page.mouse.click(box.x + box.width / 2, box.y + box.height / 2)]);
+        await page.waitForLoadState('load');
+        const positions = [];
+        for (let i = 0; i < 8; i++) {
+          positions.push(await page.evaluate(() => window.scrollY));
+          await page.waitForTimeout(60);
+        }
+        await expect(page.locator('html')).not.toHaveAttribute('lang', l.lang);
+        // Arrives where the visitor was (the two languages differ by a few lines) and does not animate there.
+        expect(Math.abs(positions[0] - before), `first position ${positions[0]} vs ${before}`).toBeLessThan(150);
+        expect(Math.max(...positions) - Math.min(...positions), `positions ${positions}`).toBeLessThan(60);
+      });
+    }
 
     test(`no critical or serious accessibility violations (${l.lang})`, async ({ page }) => {
       await page.goto(l.path);
