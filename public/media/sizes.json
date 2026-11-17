@@ -1,0 +1,30 @@
+{
+  "qa-workspace": [
+    800,
+    500
+  ],
+  "performance-lab": [
+    800,
+    500
+  ],
+  "web-testing-lab": [
+    800,
+    500
+  ],
+  "pixel-swarm": [
+    800,
+    500
+  ],
+  "game-qa-skills": [
+    800,
+    500
+  ],
+  "heloisa": [
+    768,
+    850
+  ],
+  "luna": [
+    720,
+    800
+  ]
+}
