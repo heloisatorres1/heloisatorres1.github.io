@@ -35,6 +35,7 @@ for (const l of LOCALES) {
       expect(res.headers()['content-type']).toBe('application/pdf');
       const pdf = (await res.body()).toString('latin1');
       expect(pdf.startsWith('%PDF')).toBe(true);
+      expect(pdf.match(/\/Type\s*\/Page(?!s)/g)?.length, 'the résumé fits on one page').toBe(1);
       // PDF text is compressed, so the check is done on the source the PDF is rendered from.
       const source = readFileSync('src/resume.mjs', 'utf8');
       expect(source, 'no phone number').not.toMatch(/\+\d{1,3}\s*\(?\d{2}\)?\s*\d{4,5}-?\d{4}/);

@@ -1,5 +1,5 @@
 /**
- * Public versions of the résumés. The text follows the owner's supplied PDFs exactly, except:
+ * Public versions of the résumés. The text follows the owner's latest PDFs exactly, except:
  * - phone number and e-mail are removed (contact goes through LinkedIn),
  * - the game credit uses the official spelling "PIGGY: Hunt".
  */
@@ -10,7 +10,7 @@ const RESUMES = {
     lang: 'en',
     title: 'QA Test Lead | Senior QA | Games & Software',
     location: 'Londrina, Paraná, Brazil',
-    links: 'LinkedIn: linkedin.com/in/heloisa-torres-94250814a  |  Portfolio: github.com/heloisatorres1',
+    links: 'LinkedIn: linkedin.com/in/heloisa-torres-94250814a  |  Portfolio: heloisatorres1.github.io/en/',
     sections: [
       ['PROFESSIONAL SUMMARY', [{ p: 'QA Test Lead with 6+ years in game QA (live-service and in-development; PC, mobile, web). Led internal and external teams, managed two projects at once, and owned test strategy, execution, and weekly and delivery reporting. Strong manual and exploratory testing, plus hands-on automation (Playwright, Unity, Godot, GitHub Actions) and AI-assisted tooling that supports, not replaces, QA. Open to Test Lead and Senior QA roles in games and software.' }]],
       ['CORE SKILLS', [
@@ -34,7 +34,7 @@ const RESUMES = {
         ] },
         { job: ['IT Intern, Veltec Soluções Tecnológicas, Londrina, Brazil', 'Dec 2018 – Dec 2019'] },
       ]],
-      ['PROJECTS', [{ p: 'Personal projects in AI-assisted game development, QA tools, and software and web testing. Portfolio: github.com/heloisatorres1' }]],
+      ['PROJECTS', [{ p: 'Personal projects in AI-assisted game development, QA tools, and software and web testing. GitHub: github.com/heloisatorres1' }]],
       ['EDUCATION & CERTIFICATIONS', [
         { job: ['Systems Analysis and Development (Tecnólogo), Instituto Federal do Paraná', '2017 – 2019'] },
         { p: 'ISTQB Certified Tester Foundation Level (CTFL)' },
@@ -47,7 +47,7 @@ const RESUMES = {
     lang: 'pt-BR',
     title: 'QA Test Lead | Senior QA | Jogos & Software',
     location: 'Londrina, Paraná, Brasil',
-    links: 'LinkedIn: linkedin.com/in/heloisa-torres-94250814a  |  Portfólio: github.com/heloisatorres1',
+    links: 'LinkedIn: linkedin.com/in/heloisa-torres-94250814a  |  Portfólio: heloisatorres1.github.io/en/',
     sections: [
       ['RESUMO PROFISSIONAL', [{ p: 'QA Test Lead com mais de 6 anos em QA de jogos (live-service e em desenvolvimento; PC, mobile, web). Liderou times internos e externos, gerenciou dois projetos ao mesmo tempo e foi responsável por estratégia de testes, execução e relatórios semanais e de entregas. Testes manuais e exploratórios sólidos, automação prática (Playwright, Unity, Godot, GitHub Actions) e ferramentas com apoio de IA que apoiam, e não substituem, o QA. Aberta a vagas de Test Lead e Senior QA em jogos e software.' }]],
       ['HABILIDADES', [
@@ -71,7 +71,7 @@ const RESUMES = {
         ] },
         { job: ['Estagiária de TI, Veltec Soluções Tecnológicas, Londrina, Brasil', 'Dez 2018 – Dez 2019'] },
       ]],
-      ['PROJETOS', [{ p: 'Projetos pessoais em desenvolvimento de jogos com IA, ferramentas de QA e testes de software e web. Portfólio: github.com/heloisatorres1' }]],
+      ['PROJETOS', [{ p: 'Projetos pessoais em desenvolvimento de jogos com IA, ferramentas de QA e testes de software e web. GitHub: github.com/heloisatorres1' }]],
       ['FORMAÇÃO & CERTIFICAÇÕES', [
         { job: ['Análise e Desenvolvimento de Sistemas (Tecnólogo), Instituto Federal do Paraná', '2017 – 2019'] },
         { p: 'ISTQB Certified Tester Foundation Level (CTFL)' },
@@ -83,12 +83,16 @@ const RESUMES = {
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+/** Escapes text and turns the profile and portfolio addresses into clickable links. */
+const linked = (s) =>
+  esc(s).replace(/(linkedin\.com\/in\/[\w-]+|heloisatorres1\.github\.io\/en\/|github\.com\/heloisatorres1)/g, '<a href="https://$1">$1</a>');
+
 function renderResume(r) {
   const body = r.sections
     .map(([heading, items]) => {
       const inner = items
         .map((it) => {
-          if (it.p) return `<p>${esc(it.p)}</p>`;
+          if (it.p) return `<p>${linked(it.p)}</p>`;
           if (it.kv) return `<p><b>${esc(it.kv[0])}</b> ${esc(it.kv[1])}</p>`;
           const head = `<div class="job"><b>${esc(it.job[0])}</b><span>${esc(it.job[1])}</span></div>`;
           const bullets = it.bullets ? `<ul>${it.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>` : '';
@@ -100,10 +104,11 @@ function renderResume(r) {
     .join('');
   return `<!doctype html><html lang="${r.lang}"><head><meta charset="utf-8"><title>Heloisa Oller Torres</title><style>
     @page { size: A4; margin: 14mm 15mm; }
-    body { font: 10.4pt/1.38 Arial, Helvetica, sans-serif; color: #222; margin: 0; }
+    body { font: 10pt/1.34 Arial, Helvetica, sans-serif; color: #222; margin: 0; }
     h1 { font-size: 22pt; color: #1f3a5f; margin: 0; line-height: 1.1; }
     .title { font-weight: 700; font-size: 12.5pt; margin: 2px 0 2px; }
     .contact { color: #666; font-size: 9.6pt; line-height: 1.35; }
+    a { color: inherit; text-decoration: underline; }
     h2 { font-size: 11pt; color: #1f3a5f; border-bottom: 1.2px solid #1f3a5f; padding-bottom: 2px; margin: 12px 0 5px; }
     p { margin: 0 0 4px; }
     .job { display: flex; justify-content: space-between; gap: 12px; margin-top: 4px; }
@@ -113,7 +118,7 @@ function renderResume(r) {
   </style></head><body>
   <h1>Heloisa Oller Torres</h1>
   <p class="title">${esc(r.title)}</p>
-  <p class="contact">${esc(r.location)}<br>${esc(r.links)}</p>
+  <p class="contact">${esc(r.location)}<br>${linked(r.links)}</p>
   ${body}
   </body></html>`;
 }
