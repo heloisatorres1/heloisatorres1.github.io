@@ -39,7 +39,7 @@ export const LOCALES = {
         { company: 'Veltec Soluções Tecnológicas', role: 'IT Intern', dates: 'Dec 2018 – Dec 2019', start: '2018-12', end: '2019-12' },
       ],
       education: 'Systems Analysis and Development, Instituto Federal do Paraná (2017–2019) · ISTQB Certified Tester Foundation Level',
-      languages: 'Portuguese (native) · English (fluent) · Spanish (basic)',
+      languages: 'Portuguese (native) · English (fluent)',
     },
     games: {
       heading: 'Games I worked on',
@@ -116,7 +116,7 @@ export const LOCALES = {
         { company: 'Veltec Soluções Tecnológicas', role: 'Estagiária de TI', dates: 'dez. 2018 – dez. 2019', start: '2018-12', end: '2019-12' },
       ],
       education: 'Análise e Desenvolvimento de Sistemas, Instituto Federal do Paraná (2017–2019) · ISTQB Certified Tester Foundation Level',
-      languages: 'Português (nativo) · Inglês (fluente) · Espanhol (básico)',
+      languages: 'Português (nativo) · Inglês (fluente)',
     },
     games: {
       heading: 'Jogos em que trabalhei',

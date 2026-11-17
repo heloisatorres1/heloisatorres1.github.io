@@ -39,7 +39,7 @@ const RESUMES = {
         { job: ['Systems Analysis and Development (Tecnólogo), Instituto Federal do Paraná', '2017 – 2019'] },
         { p: 'ISTQB Certified Tester Foundation Level (CTFL)' },
       ]],
-      ['LANGUAGES', [{ p: 'Portuguese (native), English (fluent), Spanish (basic)' }]],
+      ['LANGUAGES', [{ p: 'Portuguese (native), English (fluent)' }]],
     ],
   },
   'pt-BR': {
@@ -76,7 +76,7 @@ const RESUMES = {
         { job: ['Análise e Desenvolvimento de Sistemas (Tecnólogo), Instituto Federal do Paraná', '2017 – 2019'] },
         { p: 'ISTQB Certified Tester Foundation Level (CTFL)' },
       ]],
-      ['IDIOMAS', [{ p: 'Português (nativo), Inglês (fluente), Espanhol (básico)' }]],
+      ['IDIOMAS', [{ p: 'Português (nativo), Inglês (fluente)' }]],
     ],
   },
 };
