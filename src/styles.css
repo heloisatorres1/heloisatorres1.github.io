@@ -136,7 +136,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- personal ---------- */
 .personal { position: relative; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: center; padding-block: 44px; }
-.luna { max-width: 260px; }
+.luna { max-width: 260px; margin-bottom: 18px; }
+/* Name tag on the bottom edge of the frame, like a collar tag; it never covers the photo. */
+.pet-tag { position: absolute; left: 50%; bottom: -19px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 7px; padding: 4px 16px 5px; border: 2px solid var(--plum); border-radius: 999px; background: var(--peach); box-shadow: 0 0 0 4px var(--ivory); font: 700 1rem/1.2 var(--display); color: var(--ink); white-space: nowrap; }
+.tag-paw { position: static; fill: var(--plum); }
 .personal-text { border-left: 1px solid var(--line); padding-left: 44px; }
 .personal h2 { margin: 14px 0 10px; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.4rem); }
 .personal-text p:last-child { font-size: 1.15rem; color: var(--ink-2); max-width: 36em; }

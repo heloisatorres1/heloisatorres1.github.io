@@ -23,7 +23,7 @@ const PIXELS = {
   heart: ['.XX.XX.', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '..XXX..', '...X...'],
   sparkle: ['...X...', '...X...', '..XXX..', 'XXXXXXX', '..XXX..', '...X...', '...X...'],
   plus: ['.X.', 'XXX', '.X.'],
-  paw: ['.X.X.X.', '.X.X.X.', '.......', '..XXX..', '.XXXXX.', '.XXXXX.', '..X.X..'],
+  paw: ['..XX.XX..', '..XX.XX..', 'XX.....XX', 'XX.XXX.XX', '..XXXXX..', '.XXXXXXX.', '.XXXXXXX.', '..XX.XX..'],
   controller: ['..XXXXXXX..', '.XXXXXXXXX.', 'XX.XXXXX.XX', 'X...XXX.X.X', 'XX.XXXXXXXX', 'XXXX...XXXX', 'XXX.....XXX'],
 };
 
@@ -196,7 +196,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
     <figure class="photo-frame luna">
       ${img('luna', t.personal.lunaAlt, 'photo')}
       ${pixel('heart', 'deco deco-tr', 2.5)}
-      ${pixel('paw', 'deco deco-bl', 2.5)}
+      <figcaption class="pet-tag">${pixel('paw', 'tag-paw', 2)}Luna</figcaption>
     </figure>
     <div class="personal-text">
       <p class="eyebrow">${esc(t.personal.eyebrow)}</p>
