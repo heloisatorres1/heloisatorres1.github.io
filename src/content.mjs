@@ -61,7 +61,7 @@ export const LOCALES = {
         'pixel-swarm': { blurb: 'A playable puzzle game with QA built in, from game design and test strategy to reproducible bug evidence.', label: 'Game + QA', tags: ['Game design', 'Test strategy'], primary: 'Play demo' },
         'qa-workspace': { blurb: 'A QA workspace for findings, test runs and release recommendations backed by evidence.', label: 'Mock integrations', tags: ['Workflow design', 'Release decisions'], primary: 'View demo' },
         'performance-lab': { blurb: 'Explore performance sessions, synchronized telemetry and screenshots, comparisons and reports.', label: 'Simulated telemetry', tags: ['Performance analysis', 'Reporting'], primary: 'View demo' },
-        'game-qa-skills': { blurb: 'Evidence-driven game QA workflows with reproducible findings, screenshots, video and example reports.', label: 'AI-assisted QA workflows', tags: ['Bug evidence', 'Test reports'], primary: 'View reports' },
+        'qa-skills': { blurb: 'QA workflows for web and games: test-case design with automation and CI/CD plans, plus game testing with reproducible findings, screenshots, video and example reports.', label: 'AI-assisted QA workflows', tags: ['Test design', 'Bug evidence', 'Test reports'], primary: 'View reports' },
       },
     },
     featured: {
@@ -138,7 +138,7 @@ export const LOCALES = {
         'pixel-swarm': { blurb: 'Um puzzle jogável com QA desde o início, do design e da estratégia de testes às evidências para reproduzir bugs.', label: 'Jogo + QA', tags: ['Game design', 'Estratégia de testes'], primary: 'Jogar demo' },
         'qa-workspace': { blurb: 'Um workspace de QA para reportes, execuções de testes e recomendações de release baseadas em evidências.', label: 'Integrações simuladas', tags: ['Design de fluxos', 'Decisões de release'], primary: 'Ver demo' },
         'performance-lab': { blurb: 'Explore sessões de performance, telemetria e capturas sincronizadas, comparações e relatórios.', label: 'Telemetria simulada', tags: ['Análise de performance', 'Relatórios'], primary: 'Ver demo' },
-        'game-qa-skills': { blurb: 'Fluxos de QA de jogos com reportes reproduzíveis, capturas, vídeos e relatórios de exemplo.', label: 'Fluxos de QA com apoio de IA', tags: ['Evidências de bugs', 'Relatórios de teste'], primary: 'Ver relatórios' },
+        'qa-skills': { blurb: 'Fluxos de QA para web e jogos: desenho de casos de teste com planos de automação e CI/CD, e testes de jogos com reportes reproduzíveis, capturas, vídeos e relatórios de exemplo.', label: 'Fluxos de QA com apoio de IA', tags: ['Desenho de testes', 'Evidências de bugs', 'Relatórios de teste'], primary: 'Ver relatórios' },
       },
     },
     featured: {
@@ -169,7 +169,7 @@ export const PROJECTS = [
   { id: 'pixel-swarm', name: 'Pixel Swarm', demo: 'https://heloisatorres1.github.io/pixel-swarm/', source: 'https://github.com/heloisatorres1/pixel-swarm', icon: 'star' },
   { id: 'qa-workspace', name: 'QA Workspace', demo: 'https://heloisatorres1.github.io/qa-workspace/', source: 'https://github.com/heloisatorres1/qa-workspace', icon: 'layers' },
   { id: 'performance-lab', name: 'Performance Lab', demo: 'https://heloisatorres1.github.io/performance-lab/', source: 'https://github.com/heloisatorres1/performance-lab', icon: 'chart' },
-  { id: 'game-qa-skills', name: 'Game QA Skills', demo: 'https://github.com/heloisatorres1/game-qa-skills/tree/main/examples', source: 'https://github.com/heloisatorres1/game-qa-skills', icon: 'code' },
+  { id: 'qa-skills', name: 'QA Skills', demo: 'https://github.com/heloisatorres1/qa-skills/tree/main/examples', source: 'https://github.com/heloisatorres1/qa-skills', icon: 'code' },
 ];
 
 export const FEATURED = {

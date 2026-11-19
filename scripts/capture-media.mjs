@@ -106,17 +106,17 @@ async function main() {
     await page.context().close();
   }
 
-  if (!only.length || only.includes('game-qa-skills')) {
-    // A published report image from the game-qa-skills repository, cropped to its top part.
-    const res = await fetch('https://raw.githubusercontent.com/heloisatorres1/game-qa-skills/main/docs/report-preview.png');
+  if (!only.length || only.includes('qa-skills')) {
+    // A published report image from the qa-skills repository, cropped to its top part.
+    const res = await fetch('https://raw.githubusercontent.com/heloisatorres1/qa-skills/main/docs/report-preview.png');
     const png = Buffer.from(await res.arrayBuffer());
     const page = await (await browser.newContext({ viewport: { width: 1100, height: 688 } })).newPage();
     await page.setContent(`<body style="margin:0;background:#f7f7f5"><img src="data:image/png;base64,${png.toString('base64')}" style="display:block;width:1100px"></body>`);
     const shot = await page.screenshot();
     const webp = await toWebp(encoder, shot, 'image/png', 800);
-    writeFileSync(`${OUT}/game-qa-skills.webp`, webp.data);
-    sizes['game-qa-skills'] = [webp.w, webp.h];
-    console.log(`game-qa-skills: ${webp.w}x${webp.h}, ${(webp.data.length / 1024) | 0} KB`);
+    writeFileSync(`${OUT}/qa-skills.webp`, webp.data);
+    sizes['qa-skills'] = [webp.w, webp.h];
+    console.log(`qa-skills: ${webp.w}x${webp.h}, ${(webp.data.length / 1024) | 0} KB`);
     await page.context().close();
   }
 
