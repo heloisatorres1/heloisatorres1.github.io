@@ -133,6 +133,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .game-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
 .game-chips li { display: grid; place-items: center; text-align: center; padding: 12px 14px; border-radius: 16px; background: var(--peach); border: 1px solid #ecbfa6; font: 600 1.05rem/1.25 var(--display); }
 .caption { margin-top: 16px; font-style: italic; color: var(--ink-2); }
+.games-more { margin-top: 40px; }
+.with-videos li { gap: 10px; }
+.fg-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.video-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; background: var(--surface); border: 1px solid #ecbfa6; color: var(--plum); font: 600 0.95rem/1 var(--text); text-decoration: none; }
+.video-link:hover { background: var(--ivory); color: var(--plum-hover); }
 
 /* ---------- personal ---------- */
 .personal { position: relative; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: center; padding-block: 44px; }

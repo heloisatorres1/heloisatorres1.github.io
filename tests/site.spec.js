@@ -49,7 +49,9 @@ for (const l of LOCALES) {
       expect(hrefs.length).toBeGreaterThan(10);
       for (const href of hrefs) {
         if (href.includes('linkedin.com')) continue; // LinkedIn refuses automated requests (status 999).
-        const res = await request.get(href);
+        // YouTube pages send headers too large for a plain request; its oEmbed endpoint confirms the video is public.
+        const url = href.includes('youtube.com/watch') ? `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(href)}` : href;
+        const res = await request.get(url);
         expect(res.status(), href).toBeLessThan(400);
       }
     });

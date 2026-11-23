@@ -44,6 +44,12 @@ export const LOCALES = {
     games: {
       heading: 'Games I worked on',
       caption: 'QA contributions at Oktagon Games.',
+      unreleased: {
+        heading: "Unreleased games I've worked on",
+        caption: 'Soft-launch gameplay (US and Philippines), recorded and published on YouTube by players.',
+        video: 'Video',
+        titles: { puzzle: 'Puzzle game', merge: 'Merge game', cozy: 'Multiplayer cozy game' },
+      },
     },
     personal: {
       eyebrow: 'Beyond QA',
@@ -121,6 +127,12 @@ export const LOCALES = {
     games: {
       heading: 'Jogos em que trabalhei',
       caption: 'Contribuições em QA na Oktagon Games.',
+      unreleased: {
+        heading: 'Jogos não lançados em que trabalhei',
+        caption: 'Gameplay do soft launch (EUA e Filipinas), gravado e publicado no YouTube por jogadores.',
+        video: 'Vídeo',
+        titles: { puzzle: 'Jogo de puzzle', merge: 'Jogo de merge', cozy: 'Jogo cozy multiplayer' },
+      },
     },
     personal: {
       eyebrow: 'Além do QA',
@@ -179,4 +191,16 @@ export const FEATURED = {
   source: 'https://github.com/heloisatorres1/web-testing-lab',
 };
 
-export const GAMES = ['Magic: Puzzle Quest', 'Rapala Fishing', 'PIGGY: Hunt', 'Mini Golf: Battle Royale'];
+/** Games that never launched: public soft-launch videos recorded by players. */
+export const UNRELEASED_GAMES = [
+  { id: 'puzzle', videos: ['https://www.youtube.com/watch?v=ZZBXlmXTDW0', 'https://www.youtube.com/watch?v=-BRBnRRSQvc'] },
+  { id: 'merge', videos: ['https://www.youtube.com/watch?v=BApe6Zl8mME'] },
+  { id: 'cozy', videos: ['https://www.youtube.com/watch?v=f2-LVetj1Wk', 'https://www.youtube.com/watch?v=R78yAwdtm6c'] },
+];
+
+export const GAMES = [
+  { name: 'Magic: Puzzle Quest', videos: ['https://www.youtube.com/watch?v=z_B99mEf5Zk'] },
+  { name: 'Rapala Fishing', videos: ['https://www.youtube.com/watch?v=Uuffq-Fij14'] },
+  { name: 'PIGGY: Hunt', videos: ['https://www.youtube.com/watch?v=a4qJW4LxRMQ'] },
+  { name: 'Mini Golf: Battle Royale', videos: ['https://www.youtube.com/watch?v=Y_Ur2J1Ey18'] },
+];

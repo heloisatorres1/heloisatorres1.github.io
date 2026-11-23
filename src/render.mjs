@@ -1,4 +1,4 @@
-import { FEATURED, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
+import { FEATURED, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -97,6 +97,19 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
         </article>`;
   }).join('');
 
+  const gameChip = (title, videos) => {
+    const links = videos
+      .map((v, i) => {
+        const n = videos.length > 1 ? ` ${i + 1}` : '';
+        return `<a class="video-link" href="${v}" target="_blank" rel="noopener"><span>${esc(t.games.unreleased.video + n)}</span><span class="sr-only">: ${esc(title)} ${esc(t.projects.opensNew)}</span></a>`;
+      })
+      .join('');
+    return `
+        <li><span class="fg-name">${esc(title)}</span><span class="fg-links">${links}</span></li>`;
+  };
+  const games = GAMES.map((g) => gameChip(g.name, g.videos)).join('');
+  const unreleasedGames = UNRELEASED_GAMES.map((g) => gameChip(t.games.unreleased.titles[g.id], g.videos)).join('');
+
   const f = t.featured;
   const altHref = (lc) => `${siteUrl}${lc}/`;
 
@@ -185,8 +198,11 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
     </section>
     <section class="games" aria-labelledby="games-title">
       <h2 id="games-title">${esc(t.games.heading)}${pixel('sparkle', 'deco deco-inline')}</h2>
-      <ul class="game-chips">${GAMES.map((g) => `<li>${esc(g)}</li>`).join('')}</ul>
+      <ul class="game-chips with-videos">${games}</ul>
       <p class="caption">${esc(t.games.caption)}</p>
+      <h2 class="games-more">${esc(t.games.unreleased.heading)}</h2>
+      <ul class="game-chips with-videos">${unreleasedGames}</ul>
+      <p class="caption">${esc(t.games.unreleased.caption)}</p>
     </section>
   </div>
 
