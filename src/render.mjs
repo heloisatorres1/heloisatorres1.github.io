@@ -1,4 +1,10 @@
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { FEATURED, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
+
+// A fingerprint of the stylesheet, added to its URL so browsers fetch the new file after every change
+// instead of reusing a cached copy that no longer matches the page.
+const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('./styles.css', import.meta.url))).digest('hex').slice(0, 10);
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -103,7 +109,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
         const n = videos.length > 1 ? ` ${i + 1}` : '';
         return `<a class="video-link" href="${v}" target="_blank" rel="noopener"><span>${esc(t.games.unreleased.video + n)}</span><span class="sr-only">: ${esc(title)} ${esc(t.projects.opensNew)}</span></a>`;
       })
-      .join('');
+      .join(' ');
     return `
         <li><span class="fg-name">${esc(title)}</span><span class="fg-links">${links}</span></li>`;
   };
@@ -134,7 +140,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
 <link rel="icon" href="${base}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="${base}fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${base}fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${base}styles.css">
+<link rel="stylesheet" href="${base}styles.css?v=${CSS_VERSION}">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -347,7 +353,7 @@ export function renderNotFound({ siteUrl }) {
 <title>${esc(en.title)} · Heloisa Oller Torres</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="${siteUrl}favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="${siteUrl}styles.css">
+<link rel="stylesheet" href="${siteUrl}styles.css?v=${CSS_VERSION}">
 </head>
 <body class="not-found">
 <main id="main" class="wrap nf">
