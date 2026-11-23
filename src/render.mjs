@@ -81,7 +81,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
               <p class="job-dates"><time datetime="${j.start}">${esc(j.dates.split(' – ')[0])}</time> – <time datetime="${j.end}">${esc(j.dates.split(' – ')[1])}</time></p>
             </div>
             <p class="job-role">${esc(j.role)}</p>
-            ${j.summary ? `<p class="job-summary">${esc(j.summary)}</p>` : ''}
+            ${j.highlights ? `<ul class="job-highlights">${j.highlights.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>` : j.summary ? `<p class="job-summary">${esc(j.summary)}</p>` : ''}
           </li>`,
     )
     .join('');
@@ -164,7 +164,9 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
     <nav class="nav" aria-label="${esc(t.nav.label)}">
       <a href="#about">${esc(t.nav.about)}</a>
       <a href="#experience">${esc(t.nav.experience)}</a>
+      <a href="#how-i-work">${esc(t.nav.how)}</a>
       <a href="#projects">${esc(t.nav.projects)}</a>
+      <a href="#news">${esc(t.nav.news)}</a>
       <a href="#contact">${esc(t.nav.contact)}</a>
     </nav>
     <nav class="langs" aria-label="${esc(t.langSwitch)}">${langLinks}</nav>
@@ -223,6 +225,15 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
 
   <div class="wrap"><hr class="rule"></div>
 
+  <section class="wrap skills" id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">${esc(t.skills.heading)}${pixel('sparkle', 'deco deco-inline')}</h2>
+    <dl class="skill-groups">${t.skills.groups.map(([name, items]) => `
+      <div><dt>${esc(name)}</dt><dd><ul class="chips">${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></dd></div>`).join('')}
+    </dl>
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
   <section class="wrap personal" aria-labelledby="personal-title">
     <figure class="photo-frame luna">
       ${img('luna', t.personal.lunaAlt, 'photo')}
@@ -235,6 +246,19 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
       <p>${esc(t.personal.text)}</p>
     </div>
     ${pixel('heart', 'deco deco-corner', 4)}
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
+  <section class="wrap how" id="how-i-work" aria-labelledby="how-title">
+    <p class="eyebrow">${esc(t.how.eyebrow)}</p>
+    <h2 id="how-title">${esc(t.how.heading)}</h2>
+    <p class="how-intro">${esc(t.how.intro)}</p>
+    <ol class="how-steps">${t.how.steps.map(([title, text], i) => `
+      <li><span class="how-num" aria-hidden="true">${i + 1}</span><h3>${esc(title)}</h3><p>${esc(text)}</p></li>`).join('')}
+    </ol>
+    <p class="how-curious">${esc(t.how.curious)}</p>
+    <p class="how-closing">${esc(t.how.closing)}</p>
   </section>
 
   <div class="wrap"><hr class="rule"></div>
@@ -272,7 +296,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
 
   <section class="wrap news" id="news" aria-labelledby="news-title">
     <p class="eyebrow">${esc(t.news.eyebrow)}</p>
-    <h2 id="news-title">${esc(t.news.heading)}</h2>
+    <h2 id="news-title">${esc(t.news.heading)}${pixel('heart', 'deco deco-inline', 2.5)}</h2>
     <ol class="news-list">${news}
     </ol>
   </section>

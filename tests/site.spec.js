@@ -52,9 +52,9 @@ for (const l of LOCALES) {
         if (href.includes('linkedin.com')) continue; // LinkedIn refuses automated requests (status 999).
         // YouTube pages send headers too large for a plain request; its oEmbed endpoint confirms the video is public.
         const url = href.includes('youtube.com/watch') ? `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(href)}` : href;
-        // GitHub rate-limits bursts from CI with 429; wait and retry instead of reporting a broken link.
+        // GitHub rate-limits bursts (429) or answers busy (5xx); wait and retry instead of reporting a broken link.
         let res = await request.get(url);
-        for (let wait = 5000; res.status() === 429 && wait <= 20000; wait *= 2) {
+        for (let wait = 5000; (res.status() === 429 || res.status() >= 500) && wait <= 20000; wait *= 2) {
           await page.waitForTimeout(wait);
           res = await request.get(url);
         }
@@ -68,6 +68,12 @@ for (const l of LOCALES) {
         if (start.y) await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), start.y);
         const before = await page.evaluate(() => window.scrollY);
         expect(before).toBeGreaterThan(500);
+        // The section being read (same rule as the page script) and where it sits on screen.
+        const anchor = await page.evaluate(() => {
+          let el = null;
+          document.querySelectorAll('main [id]:not(#main), footer[id]').forEach((e) => { if (e.getBoundingClientRect().top <= 120) el = e; });
+          return { id: el.id, top: el.getBoundingClientRect().top };
+        });
         // A real mouse click: Playwright's click() would scroll the page to reach the sticky header first.
         const box = await page.getByRole('navigation', { name: /Language|Idioma/ }).getByRole('link', { name: l.other }).boundingBox();
         await Promise.all([page.waitForURL((u) => !u.pathname.endsWith(l.path)), page.mouse.click(box.x + box.width / 2, box.y + box.height / 2)]);
@@ -78,8 +84,10 @@ for (const l of LOCALES) {
           await page.waitForTimeout(60);
         }
         await expect(page.locator('html')).not.toHaveAttribute('lang', l.lang);
-        // Arrives where the visitor was (the two languages differ by a few lines) and does not animate there.
-        expect(Math.abs(positions[0] - before), `first position ${positions[0]} vs ${before}`).toBeLessThan(150);
+        // Arrives with the same section at the same place on screen (the languages differ in length, so the
+        // raw scroll distance can differ), and does not animate there.
+        const top = await page.evaluate((id) => document.getElementById(id).getBoundingClientRect().top, anchor.id);
+        expect(Math.abs(top - anchor.top), `#${anchor.id} at ${top} vs ${anchor.top}`).toBeLessThan(40);
         expect(Math.max(...positions) - Math.min(...positions), `positions ${positions}`).toBeLessThan(60);
       });
     }

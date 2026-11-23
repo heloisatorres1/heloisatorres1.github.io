@@ -16,7 +16,7 @@ export const LOCALES = {
     description:
       'Portfolio of Heloisa Oller Torres, QA Test Lead and Senior QA with 6+ years in game QA: experience, games worked on, and public QA projects.',
     skip: 'Skip to content',
-    nav: { label: 'Sections', about: 'About', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
+    nav: { label: 'Sections', about: 'About', experience: 'Experience', how: 'How I work', projects: 'Projects', news: 'Updates', contact: 'Contact' },
     langSwitch: 'Language',
     hero: {
       eyebrow: 'QA Test Lead / Senior QA',
@@ -34,8 +34,16 @@ export const LOCALES = {
     experience: {
       heading: 'Experience',
       jobs: [
-        { company: 'Fortis Games', role: 'Test Lead', dates: 'Mar 2022 – Nov 2026', start: '2022-03', end: '2026-11', summary: 'Led internal and external QA teams, defined test strategy and supported releases with clear evidence.' },
-        { company: 'Oktagon Games', role: 'Assistant QA (Lead)', dates: 'Jan 2020 – Mar 2022', start: '2020-01', end: '2022-03', summary: 'Tested games from development to launch, contributing test cases, exploratory testing and actionable bug reports.' },
+        { company: 'Fortis Games', role: 'Test Lead', dates: 'Mar 2022 – Nov 2026', start: '2022-03', end: '2026-11', summary: 'Led internal and external QA teams, defined test strategy and supported releases with clear evidence.', highlights: [
+          'Led internal and external QA teams (6+ testers) and vendors, managing two game projects at once.',
+          'Defined test strategy and plans: functional, regression, smoke, exploratory, performance and telemetry testing on Unity, Godot and web games (PC and mobile).',
+          'Built a CI smoke test and Playwright, Unity and Godot automations, plus GitHub Actions and Zapier workflows for TestRail test plans, Slack-to-ClickUp bug reports and QA alerts.',
+          'Delivered weekly and delivery reports, and mentored testers on their career growth.',
+        ] },
+        { company: 'Oktagon Games', role: 'Assistant QA (Lead)', dates: 'Jan 2020 – Mar 2022', start: '2020-01', end: '2022-03', summary: 'Tested games from development to launch, contributing test cases, exploratory testing and actionable bug reports.', highlights: [
+          'Supported QA on the live title Magic: Puzzle Quest and on Rapala Fishing, PIGGY: Hunt and Mini Golf: Battle Royale, from development to launch.',
+          'Ran exploratory, regression and smoke testing on PC (Windows, macOS) and mobile, contributing test cases and bug reports in Agile teams.',
+        ] },
         { company: 'Veltec Soluções Tecnológicas', role: 'IT Intern', dates: 'Dec 2018 – Dec 2019', start: '2018-12', end: '2019-12' },
       ],
       education: 'Systems Analysis and Development, Instituto Federal do Paraná (2017–2019) · ISTQB Certified Tester Foundation Level',
@@ -51,11 +59,34 @@ export const LOCALES = {
         titles: { puzzle: 'Puzzle game', merge: 'Merge game', cozy: 'Multiplayer cozy game' },
       },
     },
+    skills: {
+      heading: 'Skills & tools',
+      groups: [
+        ['QA & leadership', ['Test strategy & planning', 'Test case design', 'Risk management', 'Release tracking', 'Vendor management', 'Mentoring', 'Agile (Scrum, Kanban)']],
+        ['Testing', ['Functional', 'Regression', 'Smoke', 'Exploratory', 'Performance', 'Telemetry', 'API']],
+        ['Automation & AI', ['Playwright', 'TypeScript', 'Postman', 'Unity', 'Godot', 'GitHub Actions', 'Git', 'Zapier', 'AI-assisted testing', 'MCP']],
+        ['Test management', ['Jira', 'TestRail', 'QASE', 'Testmo', 'ClickUp', 'Slack', 'GitHub']],
+        ['Platforms', ['Windows', 'macOS', 'iOS', 'Android', 'Web']],
+      ],
+    },
     personal: {
       eyebrow: 'Beyond QA',
       heading: 'A player first. A tester by curiosity.',
       text: 'Games have been part of my life since childhood. That curiosity is still part of how I explore, learn and test.',
       lunaAlt: "Luna, Heloisa's brown dog, looking up at the camera",
+    },
+    how: {
+      eyebrow: 'How I work',
+      heading: 'AI speeds up my work. Quality stays my responsibility.',
+      intro: 'AI is now part of everyday work at most companies, and I have adopted it too, but consciously. It is a powerful tool when used the right way, and I never trust it 100%.',
+      steps: [
+        ['Analyze and plan', 'I read the specs and documents and, with Claude, analyze the code. Then I build a risk-based test plan: happy paths, negative paths and edge cases, using techniques such as boundary values, equivalence partitioning and state transitions.'],
+        ['Review everything', 'I check everything AI produces before I use it. When it reports a bug, I ask for evidence (steps, screenshots, logs) and reproduce it myself.'],
+        ['Automate and prove', 'With the plan reviewed, I build the automation and QA tools with Claude. A test only counts when it passes reliably and fails when the bug is present, and it runs automatically in CI.'],
+        ['Report with evidence', 'Every bug report has clear steps, expected and actual results, and evidence. Every release gets a clear recommendation, based on what was tested and the risks that remain.'],
+      ],
+      curious: "I'm curious by nature: I love exploring new tools and new ways to use AI. That curiosity is what led me to build the projects below.",
+      closing: "AI doesn't replace QA work. It speeds up the process and gives me better tools to raise quality.",
     },
     projects: {
       heading: 'Projects you can explore',
@@ -100,7 +131,7 @@ export const LOCALES = {
     description:
       'Portfólio de Heloisa Oller Torres, QA Test Lead e Senior QA com mais de 6 anos em QA de jogos: experiência, jogos em que trabalhou e projetos públicos de QA.',
     skip: 'Pular para o conteúdo',
-    nav: { label: 'Seções', about: 'Sobre', experience: 'Experiência', projects: 'Projetos', contact: 'Contato' },
+    nav: { label: 'Seções', about: 'Sobre', experience: 'Experiência', how: 'Como trabalho', projects: 'Projetos', news: 'Novidades', contact: 'Contato' },
     langSwitch: 'Idioma',
     hero: {
       eyebrow: 'QA Test Lead / Senior QA',
@@ -118,8 +149,16 @@ export const LOCALES = {
     experience: {
       heading: 'Experiência',
       jobs: [
-        { company: 'Fortis Games', role: 'Test Lead', dates: 'mar. 2022 – nov. 2026', start: '2022-03', end: '2026-11', summary: 'Liderei equipes internas e externas de QA, defini estratégias de teste e apoiei entregas com evidências claras.' },
-        { company: 'Oktagon Games', role: 'Assistant QA (Lead)', dates: 'jan. 2020 – mar. 2022', start: '2020-01', end: '2022-03', summary: 'Testei jogos do desenvolvimento ao lançamento, contribuindo com casos de teste, testes exploratórios e reportes de bugs claros.' },
+        { company: 'Fortis Games', role: 'Test Lead', dates: 'mar. 2022 – nov. 2026', start: '2022-03', end: '2026-11', summary: 'Liderei equipes internas e externas de QA, defini estratégias de teste e apoiei entregas com evidências claras.', highlights: [
+          'Liderei times de QA internos e externos (6+ testers) e fornecedores, gerenciando dois projetos de jogos ao mesmo tempo.',
+          'Defini estratégias e planos de teste: testes funcionais, de regressão, smoke, exploratórios, de performance e de telemetria em jogos Unity, Godot e web (PC e mobile).',
+          'Criei um smoke test em CI e automações com Playwright, Unity e Godot, além de fluxos com GitHub Actions e Zapier para planos de teste no TestRail, reportes de bugs do Slack para o ClickUp e alertas de QA.',
+          'Entreguei relatórios semanais e de entrega, e fiz mentoria de testers no crescimento de carreira.',
+        ] },
+        { company: 'Oktagon Games', role: 'Assistant QA (Lead)', dates: 'jan. 2020 – mar. 2022', start: '2020-01', end: '2022-03', summary: 'Testei jogos do desenvolvimento ao lançamento, contribuindo com casos de teste, testes exploratórios e reportes de bugs claros.', highlights: [
+          'Apoiei o QA no título live Magic: Puzzle Quest e em Rapala Fishing, PIGGY: Hunt e Mini Golf: Battle Royale, do desenvolvimento ao lançamento.',
+          'Executei testes exploratórios, de regressão e smoke em PC (Windows, macOS) e mobile, contribuindo com casos de teste e reportes de bugs em times ágeis.',
+        ] },
         { company: 'Veltec Soluções Tecnológicas', role: 'Estagiária de TI', dates: 'dez. 2018 – dez. 2019', start: '2018-12', end: '2019-12' },
       ],
       education: 'Análise e Desenvolvimento de Sistemas, Instituto Federal do Paraná (2017–2019) · ISTQB Certified Tester Foundation Level',
@@ -135,11 +174,34 @@ export const LOCALES = {
         titles: { puzzle: 'Jogo de puzzle', merge: 'Jogo de merge', cozy: 'Jogo cozy multiplayer' },
       },
     },
+    skills: {
+      heading: 'Competências e ferramentas',
+      groups: [
+        ['QA e liderança', ['Estratégia e planejamento de testes', 'Desenho de casos de teste', 'Gestão de riscos', 'Acompanhamento de releases', 'Gestão de fornecedores', 'Mentoria', 'Ágil (Scrum, Kanban)']],
+        ['Testes', ['Funcionais', 'Regressão', 'Smoke', 'Exploratórios', 'Performance', 'Telemetria', 'API']],
+        ['Automação e IA', ['Playwright', 'TypeScript', 'Postman', 'Unity', 'Godot', 'GitHub Actions', 'Git', 'Zapier', 'Testes com apoio de IA', 'MCP']],
+        ['Gestão de testes', ['Jira', 'TestRail', 'QASE', 'Testmo', 'ClickUp', 'Slack', 'GitHub']],
+        ['Plataformas', ['Windows', 'macOS', 'iOS', 'Android', 'Web']],
+      ],
+    },
     personal: {
       eyebrow: 'Além do QA',
       heading: 'Jogadora desde criança. Curiosa por natureza.',
       text: 'Os jogos fazem parte da minha vida desde a infância. Essa curiosidade continua presente na forma como exploro, aprendo e testo.',
       lunaAlt: 'Luna, a cachorra marrom da Heloisa, olhando para a câmera',
+    },
+    how: {
+      eyebrow: 'Como eu trabalho',
+      heading: 'A IA acelera meu trabalho. A qualidade continua sendo minha responsabilidade.',
+      intro: 'A IA já faz parte do dia a dia da maioria das empresas, e eu também a adotei, mas de forma consciente. Ela é uma ferramenta poderosa quando bem usada, e nunca confio nela 100%.',
+      steps: [
+        ['Analiso e planejo', 'Leio as especificações e os documentos e, com o Claude, analiso o código. Depois monto um plano de testes baseado em risco: caminhos felizes, caminhos negativos e casos de borda, com técnicas como valores-limite, partição de equivalência e transição de estados.'],
+        ['Reviso tudo', 'Confiro tudo o que a IA produz antes de usar. Quando ela aponta um bug, peço evidências (passos, capturas, logs) e reproduzo eu mesma.'],
+        ['Automatizo e comprovo', 'Com o plano revisado, construo a automação e ferramentas de QA com o Claude. Um teste só vale quando passa de forma estável e falha quando o bug existe, e ele roda automaticamente no CI.'],
+        ['Reporto com evidências', 'Cada reporte de bug tem passos claros, resultado esperado e obtido, e evidências. Cada release recebe uma recomendação clara, baseada no que foi testado e nos riscos que restam.'],
+      ],
+      curious: 'Sou curiosa por natureza: adoro explorar novas ferramentas e novas formas de usar IA. Foi essa curiosidade que me levou a criar os projetos abaixo.',
+      closing: 'A IA não substitui o trabalho de QA. Ela acelera o processo e me dá ferramentas melhores para elevar a qualidade.',
     },
     projects: {
       heading: 'Projetos para explorar',
@@ -212,7 +274,7 @@ export const NEWS = [
   {
     date: '2026-11-16',
     project: 'QA Skills',
-    href: 'https://github.com/heloisatorres1/qa-skills/blob/main/examples/pixel-swarm-playthrough/README.md',
+    href: 'https://github.com/heloisatorres1/qa-skills/tree/main/examples/pixel-swarm-playthrough',
     en: { title: 'Full playthrough of Pixel Swarm', text: 'All 102 levels completed with real taps, every reward and save checked, and a new bug found and documented.' },
     'pt-BR': { title: 'Pixel Swarm jogado do início ao fim', text: 'Os 102 níveis concluídos com toques reais, todas as recompensas e saves verificados, e um novo bug encontrado e documentado.' },
   },
