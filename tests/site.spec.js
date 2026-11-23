@@ -44,6 +44,7 @@ for (const l of LOCALES) {
     });
 
     test(`every external link opens a working page (${l.lang})`, async ({ page, request }) => {
+      test.setTimeout(120_000);
       await page.goto(l.path);
       const hrefs = [...new Set(await page.locator('a[href^="http"]').evaluateAll((as) => as.map((a) => a.href)))];
       expect(hrefs.length).toBeGreaterThan(10);
@@ -51,7 +52,12 @@ for (const l of LOCALES) {
         if (href.includes('linkedin.com')) continue; // LinkedIn refuses automated requests (status 999).
         // YouTube pages send headers too large for a plain request; its oEmbed endpoint confirms the video is public.
         const url = href.includes('youtube.com/watch') ? `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(href)}` : href;
-        const res = await request.get(url);
+        // GitHub rate-limits bursts from CI with 429; wait and retry instead of reporting a broken link.
+        let res = await request.get(url);
+        for (let wait = 5000; res.status() === 429 && wait <= 20000; wait *= 2) {
+          await page.waitForTimeout(wait);
+          res = await request.get(url);
+        }
         expect(res.status(), href).toBeLessThan(400);
       }
     });
