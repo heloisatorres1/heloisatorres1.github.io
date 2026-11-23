@@ -84,6 +84,7 @@ export const LOCALES = {
       report: 'Test report',
       thumbAlt: 'Bug reports from Web Testing Lab, each with a screenshot of the defect',
     },
+    news: { heading: 'Latest updates', eyebrow: "What's new in my projects", more: 'See it' },
     contact: {
       heading: "Let's talk about quality.",
       text: 'The best way to reach me is LinkedIn. My public work is on GitHub.',
@@ -167,6 +168,7 @@ export const LOCALES = {
       report: 'Relatório de testes',
       thumbAlt: 'Reportes de bugs do Web Testing Lab, cada um com uma captura de tela do defeito',
     },
+    news: { heading: 'Novidades', eyebrow: 'O que há de novo nos meus projetos', more: 'Ver' },
     contact: {
       heading: 'Vamos conversar sobre qualidade.',
       text: 'A melhor forma de falar comigo é pelo LinkedIn. Meus trabalhos públicos estão no GitHub.',
@@ -182,6 +184,38 @@ export const PROJECTS = [
   { id: 'qa-workspace', name: 'QA Workspace', demo: 'https://heloisatorres1.github.io/qa-workspace/', source: 'https://github.com/heloisatorres1/qa-workspace', icon: 'layers' },
   { id: 'performance-lab', name: 'Performance Lab', demo: 'https://heloisatorres1.github.io/performance-lab/', source: 'https://github.com/heloisatorres1/performance-lab', icon: 'chart' },
   { id: 'qa-skills', name: 'QA Skills', demo: 'https://github.com/heloisatorres1/qa-skills/tree/main/examples', source: 'https://github.com/heloisatorres1/qa-skills', icon: 'code' },
+];
+
+/** Latest updates, newest first. Each entry must match something published in that project. */
+export const NEWS = [
+  {
+    date: '2026-11-23',
+    project: 'QA Workspace',
+    href: 'https://heloisatorres1.github.io/qa-workspace/',
+    en: { title: 'New QA Tasks board', text: "Track the QA team's own work, like automation, test coverage and reviews, on a drag-and-drop board or a list, with owners, due dates and overdue warnings." },
+    'pt-BR': { title: 'Novo quadro de tarefas de QA', text: 'Acompanhe o trabalho do próprio time de QA, como automação, cobertura de testes e revisões, em um quadro de arrastar e soltar ou em lista, com responsáveis, prazos e alertas de atraso.' },
+  },
+  {
+    date: '2026-11-19',
+    project: 'QA Skills',
+    href: 'https://github.com/heloisatorres1/qa-skills#example-test-design-on-saucedemo-and-pixel-swarm',
+    en: { title: 'New test-design skill', text: 'Suggests test cases, an automation plan and CI/CD stages, and builds tests only after approval. Example run: 54 cases on SauceDemo, 13 approved tests.' },
+    'pt-BR': { title: 'Nova skill de desenho de testes', text: 'Sugere casos de teste, um plano de automação e etapas de CI/CD, e só cria os testes após aprovação. Exemplo: 54 casos no SauceDemo, 13 testes aprovados.' },
+  },
+  {
+    date: '2026-11-17',
+    project: 'Web Testing Lab',
+    href: 'https://heloisatorres1.github.io/web-testing-lab/',
+    en: { title: 'Project page published', text: 'One page that explains the test strategy, the automation and the bugs found, with a link to the test report published by CI every night.' },
+    'pt-BR': { title: 'Página do projeto publicada', text: 'Uma página que explica a estratégia de testes, a automação e os bugs encontrados, com link para o relatório publicado pelo CI toda noite.' },
+  },
+  {
+    date: '2026-11-16',
+    project: 'QA Skills',
+    href: 'https://github.com/heloisatorres1/qa-skills/blob/main/examples/pixel-swarm-playthrough/README.md',
+    en: { title: 'Full playthrough of Pixel Swarm', text: 'All 102 levels completed with real taps, every reward and save checked, and a new bug found and documented.' },
+    'pt-BR': { title: 'Pixel Swarm jogado do início ao fim', text: 'Os 102 níveis concluídos com toques reais, todas as recompensas e saves verificados, e um novo bug encontrado e documentado.' },
+  },
 ];
 
 export const FEATURED = {

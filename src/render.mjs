@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { FEATURED, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
+import { FEATURED, NEWS, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
 
 // A fingerprint of the stylesheet, added to its URL so browsers fetch the new file after every change
 // instead of reusing a cached copy that no longer matches the page.
@@ -115,6 +115,15 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
   };
   const games = GAMES.map((g) => gameChip(g.name, g.videos)).join('');
   const unreleasedGames = UNRELEASED_GAMES.map((g) => gameChip(t.games.unreleased.titles[g.id], g.videos)).join('');
+
+  const fmtDate = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString(code, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const news = NEWS.map((n) => `
+        <li class="news-item">
+          <p class="news-meta"><time datetime="${n.date}">${esc(fmtDate(n.date))}</time><span class="badge">${esc(n.project)}</span></p>
+          <h3>${esc(n[code].title)}</h3>
+          <p>${esc(n[code].text)}</p>
+          <a class="news-link" href="${n.href}" target="_blank" rel="noopener"><span>${esc(t.news.more)}</span>${icon('arrow', 'icon icon-sm')}<span class="sr-only">: ${esc(n.project)}, ${esc(n[code].title)} ${esc(t.projects.opensNew)}</span></a>
+        </li>`).join('');
 
   const f = t.featured;
   const altHref = (lc) => `${siteUrl}${lc}/`;
@@ -257,6 +266,15 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
         ${pixel('sparkle', 'deco deco-tr', 3)}
       </div>
     </article>
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
+  <section class="wrap news" id="news" aria-labelledby="news-title">
+    <p class="eyebrow">${esc(t.news.eyebrow)}</p>
+    <h2 id="news-title">${esc(t.news.heading)}</h2>
+    <ol class="news-list">${news}
+    </ol>
   </section>
 
 </main>
