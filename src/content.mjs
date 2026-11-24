@@ -98,7 +98,7 @@ export const LOCALES = {
         'pixel-swarm': { blurb: 'A playable puzzle game with QA built in, from game design and test strategy to reproducible bug evidence.', label: 'Game + QA', tags: ['Game design', 'Test strategy'], primary: 'Play demo' },
         'qa-workspace': { blurb: 'A QA workspace for findings, test runs and release recommendations backed by evidence.', label: 'Mock integrations', tags: ['Workflow design', 'Release decisions'], primary: 'View demo' },
         'performance-lab': { blurb: 'Explore performance sessions, synchronized telemetry and screenshots, comparisons and reports.', label: 'Simulated telemetry', tags: ['Performance analysis', 'Reporting'], primary: 'View demo' },
-        'qa-skills': { blurb: 'QA workflows for web and games: test-case design with automation and CI/CD plans, plus game testing with reproducible findings, screenshots, video and example reports.', label: 'AI-assisted QA workflows', tags: ['Test design', 'Bug evidence', 'Test reports'], primary: 'View reports' },
+        'qa-skills': { blurb: 'QA workflows for web and games: test-case design with automation and CI/CD plans, root cause analysis with proven fixes, plus game testing with reproducible findings, screenshots, video and example reports.', label: 'AI-assisted QA workflows', tags: ['Test design', 'Bug evidence', 'Test reports'], primary: 'View reports' },
       },
     },
     featured: {
@@ -213,7 +213,7 @@ export const LOCALES = {
         'pixel-swarm': { blurb: 'Um puzzle jogável com QA desde o início, do design e da estratégia de testes às evidências para reproduzir bugs.', label: 'Jogo + QA', tags: ['Game design', 'Estratégia de testes'], primary: 'Jogar demo' },
         'qa-workspace': { blurb: 'Um workspace de QA para reportes, execuções de testes e recomendações de release baseadas em evidências.', label: 'Integrações simuladas', tags: ['Design de fluxos', 'Decisões de release'], primary: 'Ver demo' },
         'performance-lab': { blurb: 'Explore sessões de performance, telemetria e capturas sincronizadas, comparações e relatórios.', label: 'Telemetria simulada', tags: ['Análise de performance', 'Relatórios'], primary: 'Ver demo' },
-        'qa-skills': { blurb: 'Fluxos de QA para web e jogos: desenho de casos de teste com planos de automação e CI/CD, e testes de jogos com reportes reproduzíveis, capturas, vídeos e relatórios de exemplo.', label: 'Fluxos de QA com apoio de IA', tags: ['Desenho de testes', 'Evidências de bugs', 'Relatórios de teste'], primary: 'Ver relatórios' },
+        'qa-skills': { blurb: 'Fluxos de QA para web e jogos: desenho de casos de teste com planos de automação e CI/CD, análise de causa raiz com correções comprovadas, e testes de jogos com reportes reproduzíveis, capturas, vídeos e relatórios de exemplo.', label: 'Fluxos de QA com apoio de IA', tags: ['Desenho de testes', 'Evidências de bugs', 'Relatórios de teste'], primary: 'Ver relatórios' },
       },
     },
     featured: {
@@ -251,6 +251,13 @@ export const PROJECTS = [
 /** Latest updates, newest first. Each entry must match something published in that project. */
 export const NEWS = [
   {
+    date: '2026-11-24',
+    project: 'QA Skills',
+    href: 'https://github.com/heloisatorres1/qa-skills/blob/main/examples/root-cause-analysis/results.md',
+    en: { title: 'New root cause analysis skill', text: "Share one bug and get the line of code behind it, a fix proven by switching it on and off, and a regression test. Tested on 5 bugs: 60/60 with the skill, 46/60 without. It also found a new bug in Pixel Swarm." },
+    'pt-BR': { title: 'Nova skill de análise de causa raiz', text: 'Compartilhe um bug e receba a linha de código que o causa, uma correção comprovada ligando e desligando a mudança, e um teste de regressão. Testada em 5 bugs: 60/60 com a skill, 46/60 sem. Também encontrou um novo bug no Pixel Swarm.' },
+  },
+  {
     date: '2026-11-23',
     project: 'QA Workspace',
     href: 'https://heloisatorres1.github.io/qa-workspace/',
@@ -270,13 +277,6 @@ export const NEWS = [
     href: 'https://heloisatorres1.github.io/web-testing-lab/',
     en: { title: 'Project page published', text: 'One page that explains the test strategy, the automation and the bugs found, with a link to the test report published by CI every night.' },
     'pt-BR': { title: 'Página do projeto publicada', text: 'Uma página que explica a estratégia de testes, a automação e os bugs encontrados, com link para o relatório publicado pelo CI toda noite.' },
-  },
-  {
-    date: '2026-11-16',
-    project: 'QA Skills',
-    href: 'https://github.com/heloisatorres1/qa-skills/tree/main/examples/pixel-swarm-playthrough',
-    en: { title: 'Full playthrough of Pixel Swarm', text: 'All 102 levels completed with real taps, every reward and save checked, and a new bug found and documented.' },
-    'pt-BR': { title: 'Pixel Swarm jogado do início ao fim', text: 'Os 102 níveis concluídos com toques reais, todas as recompensas e saves verificados, e um novo bug encontrado e documentado.' },
   },
 ];
 
