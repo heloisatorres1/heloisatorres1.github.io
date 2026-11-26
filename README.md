@@ -12,7 +12,8 @@ A static site with no framework and no tracking. One content file holds every vi
 | [`src/render.mjs`](src/render.mjs) | HTML for the pages, the root page and the 404 page |
 | [`src/styles.css`](src/styles.css) | Styles (self-hosted Fraunces and Source Serif 4) |
 | [`src/resume.mjs`](src/resume.mjs) | The public résumés, rendered to PDF at build time |
-| [`public/media/`](public/media/) | Project screenshots and photos, as WebP |
+| [`public/media/`](public/media/) | Project screenshots and photos, as WebP; `videos/` holds the automation demo video |
+| [`public/demos/`](public/demos/) | Playwright HTML report of the Pixel Swarm end-to-end test, linked from the automation demo |
 | [`scripts/build.mjs`](scripts/build.mjs) | Builds `dist/`: `/`, `/en/`, `/pt-BR/`, `404.html`, résumés, sitemap |
 | [`scripts/capture-media.mjs`](scripts/capture-media.mjs) | Re-takes the project screenshots from the live demos |
 | [`scripts/serve.mjs`](scripts/serve.mjs) | Local preview that behaves like GitHub Pages, at the root or under a subpath |

@@ -160,3 +160,26 @@ test('reduced motion turns off smooth scrolling and transitions', async ({ page 
   await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto');
   await expect(page.locator('.btn-primary').first()).toHaveCSS('transition-duration', '0s');
 });
+
+test('automation demo: the video loads and the Playwright report opens @subpath', async ({ page, request }) => {
+  await page.goto('en/');
+  const demo = page.locator('#automation-demo');
+  await expect(demo.getByRole('heading', { level: 3 })).toBeVisible();
+  // It sits in the Projects section.
+  await expect(page.locator('#projects #automation-demo')).toHaveCount(1);
+  // The hero button leads to the demo.
+  await expect(page.locator('.hero-actions a[href="#automation-demo"]')).toBeVisible();
+  // The video is a real, playable file with a cover image.
+  const video = demo.locator('video');
+  await video.scrollIntoViewIfNeeded();
+  const src = await video.locator('source').evaluate((s) => s.src);
+  const res = await request.get(src);
+  expect(res.status(), src).toBe(200);
+  expect(res.headers()['content-type']).toBe('video/webm');
+  await video.evaluate((v) => { v.preload = 'auto'; v.load(); });
+  await expect.poll(() => video.evaluate((v) => v.readyState >= 1 && v.duration > 10)).toBe(true);
+  // The report opens and shows the passing test.
+  const [report] = await Promise.all([page.context().waitForEvent('page'), demo.getByRole('link', { name: /Open the test report/ }).click()]);
+  await expect(report.getByText('Player completes a Medium level (Flowers, level 1)')).toBeVisible();
+  await expect(report.getByText('Passed').first()).toBeVisible();
+});

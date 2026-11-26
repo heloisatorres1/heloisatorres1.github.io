@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { FEATURED, NEWS, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
+import { DEMO, FEATURED, NEWS, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
 
 // A fingerprint of the stylesheet, added to its URL so browsers fetch the new file after every change
 // instead of reusing a cached copy that no longer matches the page.
@@ -122,10 +122,11 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
           <p class="news-meta"><time datetime="${n.date}">${esc(fmtDate(n.date))}</time><span class="badge">${esc(n.project)}</span></p>
           <h3>${esc(n[code].title)}</h3>
           <p>${esc(n[code].text)}</p>
-          <a class="news-link" href="${n.href}" target="_blank" rel="noopener"><span>${esc(t.news.more)}</span>${icon('arrow', 'icon icon-sm')}<span class="sr-only">: ${esc(n.project)}, ${esc(n[code].title)} ${esc(t.projects.opensNew)}</span></a>
+          <a class="news-link" href="${n.href}"${n.href.startsWith('#') ? '' : ' target="_blank" rel="noopener"'}><span>${esc(t.news.more)}</span>${icon('arrow', 'icon icon-sm')}<span class="sr-only">: ${esc(n.project)}, ${esc(n[code].title)}${n.href.startsWith('#') ? '' : ' ' + esc(t.projects.opensNew)}</span></a>
         </li>`).join('');
 
   const f = t.featured;
+  const d = t.demo;
   const altHref = (lc) => `${siteUrl}${lc}/`;
 
   return `<!doctype html>
@@ -183,6 +184,7 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
       <p class="hero-intro">${esc(t.hero.intro)}</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#projects">${esc(t.hero.explore)}${icon('arrow', 'icon icon-after')}</a>
+        <a class="btn btn-ghost" href="#automation-demo">${icon('star')}<span>${esc(t.hero.demo)}</span></a>
         <a class="btn btn-ghost" href="${base}${t.hero.resumeFile}" download type="application/pdf">${icon('download')}<span>${esc(t.hero.resume)}</span><span class="sr-only"> (${esc(t.hero.resumeHint)})</span></a>
         <span class="divider" aria-hidden="true"></span>
         <a class="icon-link" href="${LINKS.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn ${esc(t.projects.opensNew)}">${icon('linkedin')}</a>
@@ -287,6 +289,25 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
       </div>
       <div class="featured-thumb">
         ${img('web-testing-lab', f.thumbAlt, 'thumb-img')}
+        ${pixel('sparkle', 'deco deco-tr', 3)}
+      </div>
+    </article>
+    <article class="featured demo" id="automation-demo" aria-labelledby="demo-title">
+      <div class="featured-body">
+        <p class="eyebrow">${esc(d.eyebrow)}</p>
+        <h3 id="demo-title">${esc(d.heading)}</h3>
+        <p>${esc(d.text)}</p>
+        <p class="badges">${d.tags.map((g) => `<span class="badge">${esc(g)}</span>`).join('')}</p>
+        <p class="actions">
+          ${ext(base + DEMO.report, d.report, 'btn btn-primary', null).replace('</span><span class="sr-only">', `</span>${icon('arrow', 'icon icon-after')}<span class="sr-only">`)}
+          ${ext(DEMO.code, d.code, 'btn btn-ghost', 'code')}
+          ${ext(DEMO.game, d.play, 'btn btn-ghost', 'external')}
+        </p>
+      </div>
+      <div class="featured-thumb demo-thumb">
+        <video class="demo-video" controls muted playsinline preload="none" width="${DEMO.size[0]}" height="${DEMO.size[1]}" poster="${base}${DEMO.poster}" aria-label="${esc(d.videoLabel)}">
+          <source src="${base}${DEMO.video}" type="video/webm">
+        </video>
         ${pixel('sparkle', 'deco deco-tr', 3)}
       </div>
     </article>

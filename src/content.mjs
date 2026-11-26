@@ -27,6 +27,7 @@ export const LOCALES = {
       resume: 'Download résumé',
       resumeFile: 'resume/resume-heloisa-oller-torres-en.pdf',
       resumeHint: 'PDF, English',
+      demo: 'Watch automation demo',
       portraitAlt: 'Heloisa Oller Torres',
       expertiseLabel: 'Expertise',
       expertise: ['QA leadership', 'Exploratory testing', 'Automation', 'Performance', 'ISTQB CTFL'],
@@ -115,6 +116,16 @@ export const LOCALES = {
       report: 'Test report',
       thumbAlt: 'Bug reports from Web Testing Lab, each with a screenshot of the defect',
     },
+    demo: {
+      eyebrow: 'Automation demo',
+      heading: 'Watch my Playwright test play a game by itself.',
+      text: 'One end-to-end test in Playwright and TypeScript, built with Claude. It opens my game Pixel Swarm as a returning player, starts a Medium level and plays it to the end through real clicks, then checks the result: the "Level Complete" pop-up, the coin reward and the saved progress (stars and the next level unlocked). The test report shows every step, the test code, the video and a screenshot.',
+      tags: ['Playwright · TypeScript', 'Page object', 'Test data', 'Video evidence'],
+      report: 'Open the test report',
+      code: 'Test code',
+      play: 'Play the game',
+      videoLabel: 'Video of the Playwright test playing a Medium level of Pixel Swarm, from the start of the level to the Level Complete pop-up.',
+    },
     news: { heading: 'Latest updates', eyebrow: "What's new in my projects", more: 'See it' },
     contact: {
       heading: "Let's talk about quality.",
@@ -142,6 +153,7 @@ export const LOCALES = {
       resume: 'Baixar currículo',
       resumeFile: 'resume/curriculo-heloisa-oller-torres-pt-BR.pdf',
       resumeHint: 'PDF, português',
+      demo: 'Ver demo de automação',
       portraitAlt: 'Heloisa Oller Torres',
       expertiseLabel: 'Especialidades',
       expertise: ['Liderança de QA', 'Testes exploratórios', 'Automação', 'Performance', 'ISTQB CTFL'],
@@ -230,6 +242,16 @@ export const LOCALES = {
       report: 'Relatório de testes',
       thumbAlt: 'Reportes de bugs do Web Testing Lab, cada um com uma captura de tela do defeito',
     },
+    demo: {
+      eyebrow: 'Demo de automação',
+      heading: 'Veja meu teste em Playwright jogar um jogo sozinho.',
+      text: 'Um teste end-to-end em Playwright e TypeScript, criado com o Claude. Ele abre meu jogo Pixel Swarm como um jogador que já jogou antes, inicia uma fase Média e joga até o fim com cliques reais, depois confere o resultado: o pop-up de "Level Complete", a recompensa em moedas e o progresso salvo (estrelas e a próxima fase liberada). O relatório do teste mostra cada passo, o código do teste, o vídeo e uma captura de tela.',
+      tags: ['Playwright · TypeScript', 'Page object', 'Dados de teste', 'Evidência em vídeo'],
+      report: 'Abrir o relatório do teste',
+      code: 'Código do teste',
+      play: 'Jogar o jogo',
+      videoLabel: 'Vídeo do teste em Playwright jogando uma fase Média do Pixel Swarm, do início da fase até o pop-up de Level Complete.',
+    },
     news: { heading: 'Novidades', eyebrow: 'O que há de novo nos meus projetos', more: 'Ver' },
     contact: {
       heading: 'Vamos conversar sobre qualidade.',
@@ -248,8 +270,15 @@ export const PROJECTS = [
   { id: 'qa-skills', name: 'QA Skills', demo: 'https://github.com/heloisatorres1/qa-skills/tree/main/examples', source: 'https://github.com/heloisatorres1/qa-skills', icon: 'code' },
 ];
 
-/** Latest updates, newest first. Each entry must match something published in that project. */
+/** Latest updates, newest first (4 shown). Each entry must match something published in that project; an href starting with # points inside this page. */
 export const NEWS = [
+  {
+    date: '2026-11-25',
+    project: 'Pixel Swarm',
+    href: '#automation-demo',
+    en: { title: 'Playwright end-to-end test', text: 'A TypeScript test, built with Claude, that plays a Medium level of Pixel Swarm through real clicks and checks the win. Watch the video and open the full test report at the top of this page.' },
+    'pt-BR': { title: 'Teste end-to-end com Playwright', text: 'Um teste em TypeScript, criado com o Claude, que joga uma fase Média do Pixel Swarm com cliques reais e confere a vitória. Veja o vídeo e abra o relatório completo no topo desta página.' },
+  },
   {
     date: '2026-11-24',
     project: 'QA Skills',
@@ -271,14 +300,17 @@ export const NEWS = [
     en: { title: 'New test-design skill', text: 'Suggests test cases, an automation plan and CI/CD stages, and builds tests only after approval. Example run: 54 cases on SauceDemo, 13 approved tests.' },
     'pt-BR': { title: 'Nova skill de desenho de testes', text: 'Sugere casos de teste, um plano de automação e etapas de CI/CD, e só cria os testes após aprovação. Exemplo: 54 casos no SauceDemo, 13 testes aprovados.' },
   },
-  {
-    date: '2026-11-17',
-    project: 'Web Testing Lab',
-    href: 'https://heloisatorres1.github.io/web-testing-lab/',
-    en: { title: 'Project page published', text: 'One page that explains the test strategy, the automation and the bugs found, with a link to the test report published by CI every night.' },
-    'pt-BR': { title: 'Página do projeto publicada', text: 'Uma página que explica a estratégia de testes, a automação e os bugs encontrados, com link para o relatório publicado pelo CI toda noite.' },
-  },
 ];
+
+/** Automation demo: a Playwright run recorded on Pixel Swarm, with its HTML report (served from public/demos). */
+export const DEMO = {
+  video: 'media/videos/pixel-swarm-playwright-run.webm',
+  poster: 'media/pixel-swarm-playwright-poster.webp',
+  size: [430, 900],
+  report: 'demos/pixel-swarm-playwright/',
+  code: 'https://github.com/heloisatorres1/pixel-swarm/tree/main/tests/e2e',
+  game: 'https://heloisatorres1.github.io/pixel-swarm/',
+};
 
 export const FEATURED = {
   name: 'Web Testing Lab',
