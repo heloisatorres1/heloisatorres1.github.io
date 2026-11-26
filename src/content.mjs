@@ -116,6 +116,27 @@ export const LOCALES = {
       report: 'Test report',
       thumbAlt: 'Bug reports from Web Testing Lab, each with a screenshot of the defect',
     },
+    skillList: {
+      eyebrow: 'QA Skills',
+      heading: 'What each skill does',
+      text: 'Twelve skills I created for Claude Code, built and tested with Claude. Three work on any software; the other nine test games in any engine. Every result comes with proof: screenshots, video, logs or the exact line of code.',
+      groups: { any: 'Any software', games: 'Games' },
+      link: 'View skill',
+      items: {
+        'test-design': 'Reads a website, app, API, code or spec and suggests test cases (happy path, negative and edge cases) with named techniques, ranked by risk. It also suggests what to automate, a CI/CD plan and the tools. Nothing is built until I approve the cases and tools.',
+        'root-cause-analysis': 'Takes one bug and finds the exact file and line that cause it. It proves the cause by switching it off, lists what else the same cause breaks, and adds a regression test that fails before the fix and passes after. Every conclusion has a confidence level.',
+        'qa-evidence': 'The shared standard every skill follows: how to reach the software, how to capture proof (screenshots, video, logs, save files), the result statuses, the bug report format and the final HTML or Markdown report.',
+        'test-game-full': 'A full QA pass of a game. It detects which features the game has, plans the testing, runs a quick smoke check, then runs the matching game skills and merges everything into one report with a release verdict.',
+        'full-playthrough': 'Plays the whole game the way a player would: every level, world, mode and unlock. It keeps a progress log and checks that rewards and progression work. Tested on all 102 levels of Pixel Swarm.',
+        'text-review': 'Proofreads the text players see: typos, grammar, punctuation, consistent terms, placeholders, plurals and leftover developer text. Each finding points to the file and line, with a screenshot when the game can run.',
+        'test-ui': 'Maps every screen and checks it opens and closes, navigation, button states, pop-ups and the layout on phone, tablet, desktop and ultrawide sizes. Every issue has a screenshot at the exact size.',
+        'test-settings': 'Checks every toggle, slider and dropdown: it works, has the right default, is kept after a restart and resets correctly. Covers audio, language, graphics, controls and accessibility options.',
+        'test-puzzles': 'Checks that every level can be solved, the win and lose rules, edge cases, special pieces, undo, hints and boosters, scoring and stars, and that the level data has no errors.',
+        'test-store': 'Tests the shop and the game economy: prices, currency taken and given, not enough funds, double purchases, restore purchases, bundles, offers and rewarded ads. It never spends real money.',
+        'test-progression': 'Tests saving and progress: reloads, new and broken save files, unlocks, XP, daily rewards, quests, achievements and timed events, including clock changes and the switch to a new day.',
+        'test-performance': 'Measures loading times, frame rate, stutters, memory growth over long sessions and crashes in the logs, against budgets agreed beforehand. Reports the numbers, the method and charts.',
+      },
+    },
     demo: {
       eyebrow: 'Automation demo',
       heading: 'Watch my Playwright test play a game by itself.',
@@ -242,6 +263,27 @@ export const LOCALES = {
       report: 'Relatório de testes',
       thumbAlt: 'Reportes de bugs do Web Testing Lab, cada um com uma captura de tela do defeito',
     },
+    skillList: {
+      eyebrow: 'QA Skills',
+      heading: 'O que cada skill faz',
+      text: 'Doze skills que criei para o Claude Code, construídas e testadas com o Claude. Três funcionam em qualquer software; as outras nove testam jogos em qualquer engine. Todo resultado vem com prova: capturas de tela, vídeo, logs ou a linha exata do código.',
+      groups: { any: 'Qualquer software', games: 'Jogos' },
+      link: 'Ver skill',
+      items: {
+        'test-design': 'Lê um site, app, API, código ou especificação e sugere casos de teste (caminho feliz, negativos e casos de borda) com técnicas nomeadas, ordenados por risco. Também sugere o que automatizar, um plano de CI/CD e as ferramentas. Nada é construído até eu aprovar os casos e as ferramentas.',
+        'root-cause-analysis': 'Recebe um bug e encontra o arquivo e a linha exatos que o causam. Prova a causa desligando-a, lista o que mais a mesma causa quebra e adiciona um teste de regressão que falha antes da correção e passa depois. Cada conclusão tem um nível de confiança.',
+        'qa-evidence': 'O padrão comum que todas as skills seguem: como acessar o software, como capturar provas (capturas de tela, vídeo, logs, arquivos de save), os status de resultado, o formato do reporte de bug e o relatório final em HTML ou Markdown.',
+        'test-game-full': 'Um passe completo de QA em um jogo. Detecta quais recursos o jogo tem, planeja os testes, roda um smoke test rápido, depois roda as skills de jogo correspondentes e junta tudo em um relatório com um veredito de lançamento.',
+        'full-playthrough': 'Joga o jogo inteiro como um jogador faria: cada fase, mundo, modo e desbloqueio. Mantém um registro do progresso e confere se recompensas e progressão funcionam. Testada nas 102 fases do Pixel Swarm.',
+        'text-review': 'Revisa o texto que os jogadores veem: erros de digitação, gramática, pontuação, termos consistentes, placeholders, plurais e textos esquecidos pelos desenvolvedores. Cada achado aponta o arquivo e a linha, com captura de tela quando o jogo pode rodar.',
+        'test-ui': 'Mapeia todas as telas e confere se abrem e fecham, a navegação, os estados dos botões, os pop-ups e o layout em celular, tablet, desktop e telas ultrawide. Todo problema tem uma captura de tela no tamanho exato.',
+        'test-settings': 'Confere cada botão de ligar/desligar, controle deslizante e menu de opções: se funciona, tem o padrão certo, é mantido depois de reiniciar e volta ao padrão corretamente. Cobre áudio, idioma, gráficos, controles e opções de acessibilidade.',
+        'test-puzzles': 'Confere se todas as fases podem ser resolvidas, as regras de vitória e derrota, casos de borda, peças especiais, desfazer, dicas e boosters, pontuação e estrelas, e se os dados das fases não têm erros.',
+        'test-store': 'Testa a loja e a economia do jogo: preços, moedas cobradas e recebidas, saldo insuficiente, compras duplicadas, restauração de compras, pacotes, ofertas e anúncios com recompensa. Nunca gasta dinheiro real.',
+        'test-progression': 'Testa o save e o progresso: recarregamentos, saves novos e corrompidos, desbloqueios, XP, recompensas diárias, missões, conquistas e eventos com tempo, incluindo mudança de relógio e virada do dia.',
+        'test-performance': 'Mede tempos de carregamento, taxa de quadros, travadas, crescimento de memória em sessões longas e erros nos logs, comparando com metas combinadas antes. Mostra os números, o método e gráficos.',
+      },
+    },
     demo: {
       eyebrow: 'Demo de automação',
       heading: 'Veja meu teste em Playwright jogar um jogo sozinho.',
@@ -269,6 +311,13 @@ export const PROJECTS = [
   { id: 'performance-lab', name: 'Performance Lab', demo: 'https://heloisatorres1.github.io/performance-lab/', source: 'https://github.com/heloisatorres1/performance-lab', icon: 'chart' },
   { id: 'qa-skills', name: 'QA Skills', demo: 'https://github.com/heloisatorres1/qa-skills/tree/main/examples', source: 'https://github.com/heloisatorres1/qa-skills', icon: 'code' },
 ];
+
+/** Skills in the QA Skills repo, in display order. Each name is the skill's folder in the repo. */
+export const QA_SKILLS = {
+  base: 'https://github.com/heloisatorres1/qa-skills/tree/main/skills/',
+  any: ['test-design', 'root-cause-analysis', 'qa-evidence'],
+  games: ['test-game-full', 'full-playthrough', 'text-review', 'test-ui', 'test-settings', 'test-puzzles', 'test-store', 'test-progression', 'test-performance'],
+};
 
 /** Latest updates, newest first (4 shown). Each entry must match something published in that project; an href starting with # points inside this page. */
 export const NEWS = [

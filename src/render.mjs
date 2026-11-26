@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { DEMO, FEATURED, NEWS, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS } from './content.mjs';
+import { DEMO, FEATURED, NEWS, UNRELEASED_GAMES, GAMES, LINKS, LOCALES, PROJECTS, QA_SKILLS } from './content.mjs';
 
 // A fingerprint of the stylesheet, added to its URL so browsers fetch the new file after every change
 // instead of reusing a cached copy that no longer matches the page.
@@ -102,6 +102,21 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
           </div>
         </article>`;
   }).join('');
+
+  const sl = t.skillList;
+  const skillGroup = (key) => `
+      <div class="skill-group">
+        <h4>${esc(sl.groups[key])}</h4>
+        <ul class="skill-list">${QA_SKILLS[key].map((name) => `
+          <li class="skill-item">
+            <details>
+              <summary><code>${esc(name)}</code></summary>
+              <p>${esc(sl.items[name])}</p>
+              <a class="news-link" href="${QA_SKILLS.base}${name}" target="_blank" rel="noopener"><span>${esc(sl.link)}</span>${icon('arrow', 'icon icon-sm')}<span class="sr-only">: ${esc(name)} ${esc(t.projects.opensNew)}</span></a>
+            </details>
+          </li>`).join('')}
+        </ul>
+      </div>`;
 
   const gameChip = (title, videos) => {
     const links = videos
@@ -310,6 +325,12 @@ export function renderPage(code, { base, siteUrl, path, sizes }) {
         </video>
         ${pixel('sparkle', 'deco deco-tr', 3)}
       </div>
+    </article>
+
+    <article class="skills-catalog" id="qa-skills-list" aria-labelledby="skills-catalog-title">
+      <p class="eyebrow">${esc(sl.eyebrow)}</p>
+      <h3 id="skills-catalog-title">${esc(sl.heading)}</h3>
+      <p class="skills-intro">${esc(sl.text)}</p>${skillGroup('any')}${skillGroup('games')}
     </article>
   </section>
 
