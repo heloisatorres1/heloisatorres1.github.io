@@ -27,6 +27,15 @@ cpSync('public', DIST, { recursive: true });
 cpSync('src/fonts', `${DIST}/fonts`, { recursive: true });
 cpSync('src/styles.css', `${DIST}/styles.css`);
 
+// Playwright reports follow the system theme. In light mode, browsers that force dark pages darken only the
+// background and the report becomes unreadable, so the demo reports open in their own dark theme
+// (a visitor can still pick another theme in the report's settings).
+const DARK_REPORT = `<script>try{var t=localStorage.getItem('theme');if(!t||t==='system')localStorage.setItem('theme','dark-mode')}catch(e){}</script>`;
+for (const report of ['demos/pixel-swarm-playwright/index.html']) {
+  const file = `${DIST}/${report}`;
+  writeFileSync(file, readFileSync(file, 'utf8').replace('<head>', `<head>${DARK_REPORT}`));
+}
+
 writeFileSync(`${DIST}/index.html`, renderRoot({ base: '', siteUrl: SITE_URL, sizes }));
 writeFileSync(`${DIST}/en/index.html`, renderPage('en', { base: '../', siteUrl: SITE_URL, path: 'en/', sizes }));
 writeFileSync(`${DIST}/pt-BR/index.html`, renderPage('pt-BR', { base: '../', siteUrl: SITE_URL, path: 'pt-BR/', sizes }));
