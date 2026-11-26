@@ -66,8 +66,18 @@ for (const l of LOCALES) {
       test(`switching language keeps the place, without scrolling, ${start.name} (${l.lang}) @mobile`, async ({ page }) => {
         await page.goto(l.path + (start.hash ?? ''));
         if (start.y) await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), start.y);
-        // Wait for the browser to finish jumping to the start position (the #projects jump can land after load).
-        await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+        // Wait until the start position is reached and the page has stopped moving: the #projects jump and
+        // late layout changes (fonts, images) can land after load.
+        await expect.poll(async () => {
+          const a = await page.evaluate(() => window.scrollY);
+          await page.waitForTimeout(250);
+          const b = await page.evaluate(() => window.scrollY);
+          const onProjects = !start.hash || (await page.evaluate(() => {
+            const top = document.getElementById('projects').getBoundingClientRect().top;
+            return top >= 0 && top <= 120;
+          }));
+          return a === b && b > 500 && onProjects;
+        }, { timeout: 10_000 }).toBe(true);
         // The section being read (same rule as the page script) and where it sits on screen.
         const anchor = await page.evaluate(() => {
           let el = null;
